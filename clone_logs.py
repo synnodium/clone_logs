@@ -384,7 +384,7 @@ def fetch_logs(db, logs):
 
         while True:
             try:
-                time.sleep(0.5)
+                time.sleep(0.25)
                 with urllib.request.urlopen(f"https://logs.tf/api/v1/log/{log_id}") as resp:
                     insert(cursor, log_id, json.load(resp))
             except urllib.error.HTTPError as e:
