@@ -354,7 +354,7 @@ def search(limit, skip, players, uploader, title, map):
             dict(limit=min(page, limit), offset=skip, **base_params)
         )
 
-        with urllib.request.urlopen(f"https://logs.tf/api/v1/log?{params}") as resp:
+        with urllib.request.urlopen(f"https://logs.tf/api/v1/log?{params}", timeout=10) as resp:
             data = json.load(resp)
 
             age_check = datetime.utcnow() - timedelta(minutes=30)
